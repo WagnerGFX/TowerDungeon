@@ -15,7 +15,7 @@ namespace TowerDungeon.UI
         private UICutscene uiCutscene_script;
 
         [SerializeField]
-        private StringDataSO sceneGame;
+        private SceneDataSO sceneGame;
 
         public void WarriorBtn()
         {
@@ -25,7 +25,7 @@ namespace TowerDungeon.UI
             anim_warrior.FinalizeMovement(true);
             // GameManager.instance.GameOn();
 
-            Invoke("GameScene", 2f);
+            Invoke(nameof(GameScene), 2f);
         }
 
         public void ArcherBtn()
@@ -36,7 +36,7 @@ namespace TowerDungeon.UI
             anim_archer.FinalizeMovement(true);
             //   GameManager.instance.GameOn();
 
-            Invoke("GameScene", 2f);
+            Invoke(nameof(GameScene), 2f);
         }
 
         public void MageBtn()
@@ -45,7 +45,7 @@ namespace TowerDungeon.UI
             GameSettings.CharacterClass = 3;
             mage.SetActive(true);
             anim_mage.FinalizeMovement(true);
-            Invoke("GameScene", 2f);
+            Invoke(nameof(GameScene), 2f);
         }
 
         private void Update()
@@ -87,7 +87,7 @@ namespace TowerDungeon.UI
 
         public void GameScene()
         {
-            SceneManager.LoadScene(sceneGame.Text);
+            SceneManager.LoadScene(sceneGame.SceneName);
         }
     }
 }

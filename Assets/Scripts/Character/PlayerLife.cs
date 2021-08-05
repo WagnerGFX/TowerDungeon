@@ -2,11 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TowerDungeon.Management;
+using TowerDungeon.Events;
 
 namespace TowerDungeon.Character
 {
     public class PlayerLife : MonoBehaviour
     {
+        [SerializeField]
+        GameStateRequestEventChannelSO gameStateChangeRequestChannel;
+
 
         public PlayerSO playerScriptalbe;
         public int life;
@@ -108,7 +112,7 @@ namespace TowerDungeon.Character
         {
             if (life <= 0)
             {
-                GameManager.Instance.SetGameStateToGameOver();
+                gameStateChangeRequestChannel?.RaiseEvent(GameState.GameOver);
             }
         }
     }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c11092bfcee3d4bb84820cf9b85136, type: 3}
   m_Name: MenuChooseChar
   m_EditorClassIdentifier: 
-  text: MenuChooseChar
+  sceneName: MenuChooseChar
+  Scene: {fileID: 102900000, guid: a01d15004f3988c4caad7836a51c5572, type: 3}

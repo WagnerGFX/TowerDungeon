@@ -1,19 +1,27 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TowerDungeon.Events;
 
 namespace TowerDungeon.Management
 {
     public class GameManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject warrior, archer;
+        private LoadSceneRequestEventChannelSO loadSceneEventChannel;
 
         [SerializeField]
-        private StringDataSO sceneMainMenu, sceneGame, sceneGameOver;
+        private GameStateChangedEventChannelSO gameStateChangedEventChannel;
+
+        [SerializeField]
+        private GameStateRequestEventChannelSO gameStateRequestEventChannel;
+
+        [SerializeField]
+        private GameObject warrior, archer;
 
         private int characterClass;
 
         public GameState GameState { get; private set; } = GameState.InitialState;
+
         public static GameManager Instance { get; private set; }
 
         private void Awake()
@@ -27,6 +35,51 @@ namespace TowerDungeon.Management
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        private void Start()
+        {
+            loadSceneEventChannel?.Subscribe(OnLoadSceneRequested);
+            gameStateRequestEventChannel?.Subscribe(OnGameStateChangeRequested);
+            gameStateChangedEventChannel?.Subscribe(OnGameStateChanged);
+        }
+
+        private void OnLoadSceneRequested(LoadSceneEventArgs args)
+        {
+            SceneManager.LoadScene(args.SceneToLoad.SceneName);
+        }
+
+        private void OnGameStateChangeRequested(GameState newGameState)
+        {
+            var args = new GameStateChangedEventArgs(GameState, newGameState);
+
+            GameState = newGameState;
+
+            gameStateChangedEventChannel.RaiseEvent(args);
+        }
+
+        private void OnGameStateChanged(GameStateChangedEventArgs args)
+        {
+            if (args.NewGameState == GameState.GameOver)
+            {
+                GameSettings.CoinPoints = 0; //Mover para outro script
+                //SceneManager.LoadScene(sceneGameOver.SceneName);
+                //SoundManager.Instance.StopMusicTheme();
+            }
+            else if (args.NewGameState == GameState.Playing)
+            {
+                InitializePlayer(); //Mover para outro script
+            }
+        }
+
+        private void SetGameStateToGameOver()
+        {
+            gameStateRequestEventChannel.RaiseEvent(GameState.GameOver);
+        }
+
+        private void GameOn()
+        {
+            gameStateRequestEventChannel.RaiseEvent(GameState.Playing);
         }
 
         private void InitializePlayer()
@@ -43,48 +96,6 @@ namespace TowerDungeon.Management
             {
                 archer.SetActive(true);
             }
-        }
-
-        public void SetGameStateToInitialState()
-        {
-            GameState = GameState.InitialState;
-        }
-
-        public void SetGameStateToPlaying()
-        {
-            GameState = GameState.Playing;
-        }
-
-        public void SetGameStateToGameOver()
-        {
-            GameState = GameState.GameOver;
-            if (GameState == GameState.GameOver)
-            {
-                Invoke(nameof(LoadGameOver), .1f);
-            }
-        }
-
-        public void GameOverOptions()
-        {
-            SceneManager.LoadScene(sceneMainMenu.Text);
-        }
-
-        public void BackToGame()
-        {
-            SceneManager.LoadScene(sceneGame.Text);
-        }
-
-        public void GameOn()
-        {
-            SetGameStateToPlaying();
-            InitializePlayer();
-        }
-
-        public void LoadGameOver()
-        {
-            GameSettings.CoinPoints = 0;
-            SceneManager.LoadScene(sceneGameOver.Text);
-            //SoundManager.Instance.StopMusicTheme();
         }
     } 
 }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c11092bfcee3d4bb84820cf9b85136, type: 3}
   m_Name: MenuRank
   m_EditorClassIdentifier: 
-  text: MenuRank
+  sceneName: MenuRank
+  Scene: {fileID: 102900000, guid: 9f7b840cb6fe7f5419d25fcdfb70ed44, type: 3}

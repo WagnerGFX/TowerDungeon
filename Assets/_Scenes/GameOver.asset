@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c11092bfcee3d4bb84820cf9b85136, type: 3}
   m_Name: GameOver
   m_EditorClassIdentifier: 
-  text: GameOver
+  sceneName: GameOver
+  Scene: {fileID: 102900000, guid: f8f7dcad19cca0ca48f9a2303b733301, type: 3}

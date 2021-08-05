@@ -10,7 +10,7 @@ namespace TowerDungeon.UI
         private int time;
 
         [SerializeField]
-        private StringDataSO sceneMainTitle;
+        private SceneDataSO sceneMainTitle;
 
         void Update()
         {
@@ -20,7 +20,7 @@ namespace TowerDungeon.UI
         public IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(time);
-            SceneManager.LoadScene(sceneMainTitle.Text);
+            SceneManager.LoadScene(sceneMainTitle.SceneName);
         }
     }
 

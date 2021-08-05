@@ -6,11 +6,11 @@ namespace TowerDungeon.UI
     public class CreditsUI : MonoBehaviour
     {
         [SerializeField]
-        private StringDataSO sceneTitleMenu;
+        private SceneDataSO sceneTitleMenu;
 
         public void Back()
         {
-            SceneManager.LoadScene(sceneTitleMenu.Text);
+            SceneManager.LoadScene(sceneTitleMenu.SceneName);
         }
     }
 }

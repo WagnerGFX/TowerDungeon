@@ -9,13 +9,13 @@ namespace TowerDungeon.UI
         private GameObject mainPanel;
 
         [SerializeField]
-        private StringDataSO sceneMenuChooseChar;
+        private SceneDataSO sceneMenuChooseChar;
 
         [SerializeField]
-        private StringDataSO sceneMenuCredits;
+        private SceneDataSO sceneMenuCredits;
 
         [SerializeField]
-        private StringDataSO sceneMenuRank;
+        private SceneDataSO sceneMenuRank;
 
         private float timeToLoad = 0.5f;
         private int whichPlayerIsOn = 1;
@@ -27,17 +27,17 @@ namespace TowerDungeon.UI
 
         public void LoadChoosePanel()
         {
-            SceneManager.LoadScene(sceneMenuChooseChar.Text);
+            SceneManager.LoadScene(sceneMenuChooseChar.SceneName);
         }
 
         public void LoadCredits()
         {
-            SceneManager.LoadScene(sceneMenuCredits.Text);
+            SceneManager.LoadScene(sceneMenuCredits.SceneName);
         }
 
         public void LoadRank()
         {
-            SceneManager.LoadScene(sceneMenuRank.Text);
+            SceneManager.LoadScene(sceneMenuRank.SceneName);
         }
 
         public void LoadExit()

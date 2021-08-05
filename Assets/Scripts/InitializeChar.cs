@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TowerDungeon.Management;
+using TowerDungeon.Events;
 
 namespace TowerDungeon
 {
@@ -8,13 +9,16 @@ namespace TowerDungeon
         [SerializeField]
         private GameObject warrior, archer, mage;
 
+        [SerializeField]
+        private GameStateRequestEventChannelSO gameStateChangeRequestChannel;
+
         void Awake()
         {
             int characterClass = GameSettings.CharacterClass;
 
             if (characterClass == 1)
             {
-                Debug.Log("id:" + characterClass);
+                Debug.Log($"id: {characterClass}");
                 warrior.SetActive(true);
                 archer.SetActive(false);
                 mage.SetActive(false);
@@ -35,7 +39,7 @@ namespace TowerDungeon
 
             GameSettings.EnemyPoints = 0;
 
-            GameManager.Instance.SetGameStateToPlaying();
+            gameStateChangeRequestChannel?.RaiseEvent(GameState.Playing);
         }
     }
 }

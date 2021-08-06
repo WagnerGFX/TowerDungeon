@@ -3,6 +3,6 @@ using EventSystem;
 
 namespace TowerDungeon.Events
 {
-    [CreateAssetMenu(menuName = "Tower Dungeon/Events/GameStateChanged Event Channel", order = 1)]
+    [CreateAssetMenu(menuName = "Tower Dungeon/Event Channels/GameStateChanged Event", order = 1)]
     public class GameStateChangedEventChannelSO : EventChannelBaseSO<GameStateChangedEventArgs> { } 
 }

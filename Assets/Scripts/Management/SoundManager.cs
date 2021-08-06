@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
+using TowerDungeon.Events;
 
 namespace TowerDungeon.Management
 {
     public class SoundManager : MonoBehaviour
     {
+        public static SoundManager Instance { get; private set; }
+
+        [Header("Event Channels")]
+        [SerializeField]
+        private PlayMusicRequestEventChannelSO playMusicRequestEventChannel;
+
+        [Header("Prefabs")]
         [SerializeField]
         private GameObject BGMAudioSource;
 
         private AudioPlayer currentMusicPlayer;
-
-        public AudioSource soundFX, chestFx;
-        public AudioClip coinsFx;
-
-        public static SoundManager Instance { get; private set; }
 
         void Awake()
         {
@@ -20,6 +23,7 @@ namespace TowerDungeon.Management
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
+                SubscribeEvents();
             }
             else
             {
@@ -27,16 +31,21 @@ namespace TowerDungeon.Management
             }
         }
 
-        public void PlayMusic(AudioSO music)
+        private void SubscribeEvents()
         {
-
-            var instance = Instantiate(BGMAudioSource);
-            currentMusicPlayer = instance.GetComponent<AudioPlayer>();
-            currentMusicPlayer.Play(music);
-
+            playMusicRequestEventChannel.Subscribe(OnMusicPlayRequested);
         }
 
-        public void StopMusic()
+        void OnMusicPlayRequested(AudioSO music)
+        {
+            var instance = Instantiate(BGMAudioSource, this.transform);
+
+            currentMusicPlayer?.FadeOutAndDestroy();
+            currentMusicPlayer = instance.GetComponent<AudioPlayer>();
+            currentMusicPlayer.Play(music);
+        }
+
+        void OnMusicStopRequested()
         {
             currentMusicPlayer.StopAndDestroy();
         }

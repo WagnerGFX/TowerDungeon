@@ -137,8 +137,9 @@ GameObject:
   - component: {fileID: 186423192}
   - component: {fileID: 186423195}
   - component: {fileID: 186423196}
+  - component: {fileID: 186423197}
   m_Layer: 5
-  m_Name: Play
+  m_Name: Play Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,12 +157,12 @@ RectTransform:
   m_LocalScale: {x: 0.3742033, y: 0.3742033, z: 0.3742033}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.12325001, y: 0.23600002}
   m_AnchorMax: {x: 0.30200002, y: 0.39016667}
-  m_AnchoredPosition: {x: -1, y: -8}
-  m_SizeDelta: {x: 409, y: 207}
+  m_AnchoredPosition: {x: 42, y: -4.751999}
+  m_SizeDelta: {x: 246.0359, y: 125.3694}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &186423192
 MonoBehaviour:
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186423190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -192,7 +193,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 203850809728a554daaa73a60b7b4b62, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 203850809728a554daaa73a60b7b4b62, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -258,13 +259,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1465286456}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: PlayButton
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1465286456}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -293,6 +310,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &186423197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186423190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad5fa15d8603f54dbfc699c21df38f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &265065932
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +457,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.98758864, y: 1}
@@ -558,6 +587,34 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601657228414461024, guid: 9049e7854cb6afb4c8edb370c9df7452, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -587,6 +644,7 @@ GameObject:
   - component: {fileID: 551143663}
   - component: {fileID: 551143662}
   - component: {fileID: 551143665}
+  - component: {fileID: 551143666}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -691,6 +749,20 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &551143666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551143661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f82a12c2de39b839595178be6b814a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playMusicRequestEventChannel: {fileID: 11400000, guid: 3264db1e3724e614bbb87ab6922bebb8, type: 2}
+  MusicToPlay: {fileID: 11400000, guid: aa5beb01d1581ea448b3ee868a3d1a58, type: 2}
 --- !u!1001 &609355926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,6 +772,34 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8196444253039376834, guid: ad4e9918e003f6a65a899679e93122e0, type: 3}
@@ -855,17 +955,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: 1054132383583890850, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: 3710738434707379630, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 2064916234097673511, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: -1967631576421560919, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 8056856818456041789, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: 3279352641294131588, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: 3837173908680883260, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 4502412055082496612, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 4754684134866288074, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_PointAction: {fileID: -5613699047673406946, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_MoveAction: {fileID: 7208169789533429991, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_SubmitAction: {fileID: 8998796226121612622, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_CancelAction: {fileID: -5143639225978657091, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_LeftClickAction: {fileID: -2163419212128126845, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_MiddleClickAction: {fileID: 3914735734315534389, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_RightClickAction: {fileID: -1878592896446897681, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_ScrollWheelAction: {fileID: 1600418728622312393, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -485613970578689953, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 4282927015068725965, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
 --- !u!114 &952642256
@@ -912,7 +1012,7 @@ GameObject:
   - component: {fileID: 1047939718}
   - component: {fileID: 1047939719}
   m_Layer: 5
-  m_Name: Credits
+  m_Name: Credits Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -930,12 +1030,12 @@ RectTransform:
   m_LocalScale: {x: 0.3742033, y: 0.3742033, z: 0.3742033}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28084373, y: 0.025}
   m_AnchorMax: {x: 0.4534375, y: 0.18044443}
-  m_AnchoredPosition: {x: 8, y: -3}
-  m_SizeDelta: {x: 417, y: 206}
+  m_AnchoredPosition: {x: 20, y: 3}
+  m_SizeDelta: {x: 253.0425, y: 124.5051}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1047939715
 MonoBehaviour:
@@ -944,7 +1044,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047939713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -966,7 +1066,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 1427eebd70eef174db89c056e3e60817, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 1427eebd70eef174db89c056e3e60817, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -1032,13 +1132,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1465286456}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: Credits
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Credits
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1465286456}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Credits
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1058,7 +1174,7 @@ Animator:
   m_GameObject: {fileID: 1047939713}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29da63985bf9ee9459a0dd948114d907, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8319f36fe77fc24582293a152bc10f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1099,7 +1215,7 @@ RectTransform:
   - {fileID: 1612065933}
   - {fileID: 1343033674}
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07537335, y: 0.086}
   m_AnchorMax: {x: 0.9407321, y: 0.93615633}
@@ -1160,7 +1276,7 @@ GameObject:
   - component: {fileID: 1125725277}
   - component: {fileID: 1125725282}
   m_Layer: 5
-  m_Name: Rank
+  m_Name: Ranking Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1178,12 +1294,12 @@ RectTransform:
   m_LocalScale: {x: 0.3742033, y: 0.3742033, z: 0.3742033}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.67543757, y: 0.23600002}
   m_AnchorMax: {x: 0.8638751, y: 0.39016667}
-  m_AnchoredPosition: {x: -6.5, y: -2.5000305}
-  m_SizeDelta: {x: 397, y: 207}
+  m_AnchoredPosition: {x: -23, y: -2}
+  m_SizeDelta: {x: 235.423, y: 125.3694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1125725277
 Animator:
@@ -1195,7 +1311,7 @@ Animator:
   m_GameObject: {fileID: 1125725275}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f0f5d60fc7307cc458b56c83a0760f9a, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8319f36fe77fc24582293a152bc10f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1217,10 +1333,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1465286456}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Ranking
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1465286456}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Ranking
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1125725279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1228,7 +1372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1125725275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1250,7 +1394,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 7475dadc510cd7f4597d893e182f4096, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 7475dadc510cd7f4597d893e182f4096, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -1321,8 +1465,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1465286456}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: LoadRank
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Ranking
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1582,7 +1726,7 @@ GameObject:
   - component: {fileID: 1346020309}
   - component: {fileID: 1346020310}
   m_Layer: 5
-  m_Name: Artbook
+  m_Name: Artbook Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1600,12 +1744,12 @@ RectTransform:
   m_LocalScale: {x: 0.3742033, y: 0.3742033, z: 0.3742033}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.39800003, y: 0.23600002}
   m_AnchorMax: {x: 0.5835313, y: 0.39016667}
-  m_AnchoredPosition: {x: -1, y: -2.5}
-  m_SizeDelta: {x: 401, y: 207}
+  m_AnchoredPosition: {x: 11, y: -2}
+  m_SizeDelta: {x: 238.8872, y: 125.3694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1346020306
 MonoBehaviour:
@@ -1614,7 +1758,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346020304}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -1636,7 +1780,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: 1ef9c0411b406494c9b5194e82a0b22b, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: 1ef9c0411b406494c9b5194e82a0b22b, type: 3}
     m_DisabledSprite: {fileID: 0}
@@ -1702,7 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls: []
@@ -1716,7 +1860,7 @@ Animator:
   m_GameObject: {fileID: 1346020304}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f0f5d60fc7307cc458b56c83a0760f9a, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8319f36fe77fc24582293a152bc10f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1736,8 +1880,8 @@ GameObject:
   - component: {fileID: 1465286455}
   - component: {fileID: 1465286454}
   - component: {fileID: 1465286453}
-  - component: {fileID: 1465286456}
   - component: {fileID: 1465286452}
+  - component: {fileID: 1465286456}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1818,13 +1962,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1914124101}
-  - {fileID: 454072500}
   - {fileID: 186423191}
   - {fileID: 1047939714}
   - {fileID: 1346020305}
   - {fileID: 1670383796}
-  - {fileID: 1069755279}
   - {fileID: 1125725276}
+  - {fileID: 454072500}
+  - {fileID: 1069755279}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1849,6 +1993,9 @@ MonoBehaviour:
   sceneMenuChooseChar: {fileID: 11400000, guid: 25d375b6a48efd944a55359daa74ec37, type: 2}
   sceneMenuCredits: {fileID: 11400000, guid: 174170ce5bc92fb45a169d66d42b2316, type: 2}
   sceneMenuRank: {fileID: 11400000, guid: 8535214749fa5364f91cc7af871e7099, type: 2}
+  loadSceneRequestEventChannel: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
+  exitGameRequestEventChannel: {fileID: 11400000, guid: 9c28e7dac12ed3147b5134888f4f8657, type: 2}
+  buttonFunctionDelay: 0.5
 --- !u!1 &1612065932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2185,7 @@ GameObject:
   - component: {fileID: 1670383800}
   - component: {fileID: 1670383801}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2056,12 +2203,12 @@ RectTransform:
   m_LocalScale: {x: 0.3742033, y: 0.3742033, z: 0.3742033}
   m_Children: []
   m_Father: {fileID: 1465286455}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.53281254, y: 0.025}
   m_AnchorMax: {x: 0.7125625, y: 0.18044443}
-  m_AnchoredPosition: {x: 2, y: -8}
-  m_SizeDelta: {x: 408, y: 206}
+  m_AnchoredPosition: {x: 5, y: 3}
+  m_SizeDelta: {x: 245.1077, y: 124.5051}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1670383797
 MonoBehaviour:
@@ -2070,7 +2217,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670383795}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -2092,8 +2239,8 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 21300000, guid: d10c66bde88e5f44f987d6a8d8f63a49, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: d10c66bde88e5f44f987d6a8d8f63a49, type: 3}
+    m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 21300000, guid: d10c66bde88e5f44f987d6a8d8f63a49, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -2158,13 +2305,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1465286456}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: ExitGame
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Exit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1465286456}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.MainMenu, Assembly-CSharp
+          m_MethodName: OnButtonPressed_Exit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2184,7 +2347,7 @@ Animator:
   m_GameObject: {fileID: 1670383795}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 15420b5ac424f3145b87cf76c655eefe, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8319f36fe77fc24582293a152bc10f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2206,7 +2369,7 @@ GameObject:
   - component: {fileID: 1914124102}
   - component: {fileID: 1914124104}
   m_Layer: 5
-  m_Name: title
+  m_Name: Title Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2228,8 +2391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22419621, y: 0.40229166}
   m_AnchorMax: {x: 0.77251685, y: 1}
-  m_AnchoredPosition: {x: 90, y: -0.5}
-  m_SizeDelta: {x: 1119.4796, y: 1112.5193}
+  m_AnchoredPosition: {x: 19, y: -0.0000076294}
+  m_SizeDelta: {x: 617.5829, y: 671.537}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914124102
 MonoBehaviour:
@@ -2279,7 +2442,7 @@ Animator:
   m_GameObject: {fileID: 1914124100}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 59823316c796ace48be35c6bb5760aea, type: 2}
+  m_Controller: {fileID: 9100000, guid: a8319f36fe77fc24582293a152bc10f5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

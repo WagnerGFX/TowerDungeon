@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d302808516c1b8047bccd969cc2a81b3, type: 3}
-  m_Name: BGM Game
+  m_Script: {fileID: 11500000, guid: da40fd5c6d099504a86f079e8cd34758, type: 3}
+  m_Name: OnPlayMusicRequested
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 49dd2b81674460749906736471bbef16, type: 3}
-  audioType: 0
+  editorDescription: 

@@ -6,6 +6,7 @@ namespace TowerDungeon.Management
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("Event Channels")]
         [SerializeField]
         private LoadSceneRequestEventChannelSO loadSceneEventChannel;
 
@@ -15,6 +16,10 @@ namespace TowerDungeon.Management
         [SerializeField]
         private GameStateRequestEventChannelSO gameStateRequestEventChannel;
 
+        [SerializeField]
+        private VoidEventChannelSO exitGameRequestEventChannel;
+
+        [Header("Remove later")]
         [SerializeField]
         private GameObject warrior, archer;
 
@@ -30,6 +35,7 @@ namespace TowerDungeon.Management
             {
                 Instance = this;
                 DontDestroyOnLoad(this);
+                SubscribeEvents();
             }
             else
             {
@@ -37,16 +43,22 @@ namespace TowerDungeon.Management
             }
         }
 
-        private void Start()
+        private void SubscribeEvents()
         {
-            loadSceneEventChannel?.Subscribe(OnLoadSceneRequested);
-            gameStateRequestEventChannel?.Subscribe(OnGameStateChangeRequested);
-            gameStateChangedEventChannel?.Subscribe(OnGameStateChanged);
+            loadSceneEventChannel.Subscribe(OnLoadSceneRequested);
+            gameStateRequestEventChannel.Subscribe(OnGameStateChangeRequested);
+            gameStateChangedEventChannel.Subscribe(OnGameStateChanged);
+            exitGameRequestEventChannel.Subscribe(OnGameExitRequested);
         }
 
-        private void OnLoadSceneRequested(LoadSceneEventArgs args)
+        private void OnLoadSceneRequested(SceneDataSO args)
         {
-            SceneManager.LoadScene(args.SceneToLoad.SceneName);
+            SceneManager.LoadScene(args.SceneName);
+        }
+
+        private void OnGameExitRequested()
+        {
+            Application.Quit();
         }
 
         private void OnGameStateChangeRequested(GameState newGameState)

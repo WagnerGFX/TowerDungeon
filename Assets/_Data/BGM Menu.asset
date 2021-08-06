@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d302808516c1b8047bccd969cc2a81b3, type: 3}
   m_Name: BGM Menu
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 0a1a5cd5cfd065a4f8ae206653b5c704, type: 3}
   audioType: 0

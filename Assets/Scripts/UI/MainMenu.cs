@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TowerDungeon.Events;
 
 namespace TowerDungeon.UI
 {
@@ -8,75 +8,50 @@ namespace TowerDungeon.UI
         [SerializeField]
         private GameObject mainPanel;
 
+        [Header("Scene Data")]
         [SerializeField]
         private SceneDataSO sceneMenuChooseChar;
-
         [SerializeField]
         private SceneDataSO sceneMenuCredits;
-
         [SerializeField]
         private SceneDataSO sceneMenuRank;
 
-        private float timeToLoad = 0.5f;
-        private int whichPlayerIsOn = 1;
+        [Header("Event Channels")]
+        [SerializeField]
+        private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
+        [SerializeField]
+        private VoidEventChannelSO exitGameRequestEventChannel;
+
+        [SerializeField]
+        private float buttonFunctionDelay = 0.5f;
 
         private void Start()
         {
             mainPanel.SetActive(false);
         }
 
-        public void LoadChoosePanel()
-        {
-            SceneManager.LoadScene(sceneMenuChooseChar.SceneName);
-        }
+        private void LoadChoosePanel()
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuChooseChar);
 
-        public void LoadCredits()
-        {
-            SceneManager.LoadScene(sceneMenuCredits.SceneName);
-        }
+        private void LoadCredits()
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuCredits);
 
-        public void LoadRank()
-        {
-            SceneManager.LoadScene(sceneMenuRank.SceneName);
-        }
+        private void LoadRank()
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuRank);
 
-        public void LoadExit()
-        {
-            Application.Quit();
-        }
+        private void ExitGame()
+            => exitGameRequestEventChannel.RaiseEvent();
 
-        public void PlayButton()
-        {
-            Invoke(nameof(LoadChoosePanel), timeToLoad);
-        }
+        public void OnButtonPressed_Play()
+            => Invoke(nameof(LoadChoosePanel), buttonFunctionDelay);
 
-        public void RankButton()
-        {
-            Invoke(nameof(LoadRank), timeToLoad);
-        }
+        public void OnButtonPressed_Ranking()
+            => Invoke(nameof(LoadRank), buttonFunctionDelay);
 
-        public void Credits()
-        {
-            Invoke(nameof(LoadCredits), timeToLoad);
-        }
+        public void OnButtonPressed_Credits()
+            => Invoke(nameof(LoadCredits), buttonFunctionDelay);
 
-        public void ExitGame()
-        {
-            Invoke(nameof(LoadExit), timeToLoad);
-        }
-
-        public void SwitchCharacter()
-        {
-            switch (whichPlayerIsOn)
-            {
-                case 1:
-                    GameSettings.CharacterClass = 1;
-                    break;
-
-                case 2:
-                    GameSettings.CharacterClass = 2;
-                    break;
-            }
-        }
+        public void OnButtonPressed_Exit()
+            => Invoke(nameof(ExitGame), buttonFunctionDelay);
     }
 }

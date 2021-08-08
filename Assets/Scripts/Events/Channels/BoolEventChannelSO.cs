@@ -8,5 +8,5 @@ namespace TowerDungeon.Events
     /// Example: An event to toggle a UI interface
     /// </summary>
     [CreateAssetMenu(menuName = "Tower Dungeon/Event Channels/Bool Event", order = 1)]
-    public class BoolEventChannelSO : EventChannelBaseSO<bool> { } 
+    public class BoolEventChannelSO : EventChannelBaseSO<bool, object> { } 
 }

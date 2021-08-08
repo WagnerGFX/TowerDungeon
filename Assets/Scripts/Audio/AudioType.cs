@@ -1,5 +1,5 @@
 
-namespace TowerDungeon
+namespace TowerDungeon.Audio
 {
     public enum AudioType
     {

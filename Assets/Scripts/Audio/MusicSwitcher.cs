@@ -1,7 +1,7 @@
 using UnityEngine;
 using TowerDungeon.Events;
 
-namespace TowerDungeon.Management
+namespace TowerDungeon.Audio
 {
     public class MusicSwitcher : MonoBehaviour
     {
@@ -11,10 +11,17 @@ namespace TowerDungeon.Management
         [SerializeField]
         private AudioSO MusicToPlay;
 
+        [SerializeField]
+        private bool destroyGameObjectAfter = false;
+
         void Start()
         {
-            playMusicRequestEventChannel.RaiseEvent(MusicToPlay);
-            Destroy(this);
+            playMusicRequestEventChannel.RaiseEvent(MusicToPlay, this);
+
+            if (destroyGameObjectAfter)
+                Destroy(gameObject);
+            else
+                Destroy(this);
         }
     }
 }

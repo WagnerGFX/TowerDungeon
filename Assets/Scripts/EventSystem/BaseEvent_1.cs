@@ -6,5 +6,5 @@ namespace EventSystem
     /// To use a generic UnityEvent type you must override the generic type.
     /// </summary>
     [System.Serializable]
-    public class BaseEvent<T> : UnityEvent<T> { }
+    public class BaseEvent<TValue> : UnityEvent<TValue> { }
 }

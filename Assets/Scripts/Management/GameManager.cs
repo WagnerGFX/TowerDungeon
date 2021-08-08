@@ -17,7 +17,7 @@ namespace TowerDungeon.Management
         private GameStateRequestEventChannelSO gameStateRequestEventChannel;
 
         [SerializeField]
-        private VoidEventChannelSO exitGameRequestEventChannel;
+        private BasicEventChannelSO exitGameRequestEventChannel;
 
         [Header("Remove later")]
         [SerializeField]
@@ -51,26 +51,29 @@ namespace TowerDungeon.Management
             exitGameRequestEventChannel.Subscribe(OnGameExitRequested);
         }
 
-        private void OnLoadSceneRequested(SceneDataSO args)
+        private void OnLoadSceneRequested(SceneDataSO args, object sender)
         {
             SceneManager.LoadScene(args.SceneName);
         }
 
-        private void OnGameExitRequested()
+        private void OnGameExitRequested(object sender)
         {
             Application.Quit();
+#if UNITY_EDITOR
+            Debug.Log("Application.Quit()");
+#endif
         }
 
-        private void OnGameStateChangeRequested(GameState newGameState)
+        private void OnGameStateChangeRequested(GameState newGameState, object sender)
         {
             var args = new GameStateChangedEventArgs(GameState, newGameState);
 
             GameState = newGameState;
 
-            gameStateChangedEventChannel.RaiseEvent(args);
+            gameStateChangedEventChannel.RaiseEvent(args, this);
         }
 
-        private void OnGameStateChanged(GameStateChangedEventArgs args)
+        private void OnGameStateChanged(GameStateChangedEventArgs args, object sender)
         {
             if (args.NewGameState == GameState.GameOver)
             {
@@ -82,16 +85,6 @@ namespace TowerDungeon.Management
             {
                 InitializePlayer(); //Mover para outro script
             }
-        }
-
-        private void SetGameStateToGameOver()
-        {
-            gameStateRequestEventChannel.RaiseEvent(GameState.GameOver);
-        }
-
-        private void GameOn()
-        {
-            gameStateRequestEventChannel.RaiseEvent(GameState.Playing);
         }
 
         private void InitializePlayer()

@@ -5,36 +5,33 @@ using UnityEngine.Events;
 
 namespace EventSystem
 {
-    /// <summary>
-    /// Anonymous Event Channel, preffer to use EventChannelBaseSO<object> with the sender data.
-    /// </summary>
-    public abstract class EventChannelBaseSO : ScriptableObject
+    public abstract class EventChannelBaseSO<TValue,TSender> : ScriptableObject
     {
 #if UNITY_EDITOR
         [SerializeField] [TextArea]
         private string editorDescription;
 #endif
 
-        private event UnityAction EventChannel;
+        private event UnityAction<TValue, TSender> EventChannel;
 
-        public event Action<ScriptableObject, Delegate[]> OnEventRaised;
-        public event Action<ScriptableObject> OnEventRaisedWithNoListeners;
-        public event Action<ScriptableObject, UnityAction, bool> OnEventSubscribed;
-        public event Action<ScriptableObject, UnityAction, bool> OnEventUnsubscribed;
+        public event Action<ScriptableObject, TValue, TSender, Delegate[]> OnEventRaised;
+        public event Action<ScriptableObject, TValue, TSender> OnEventRaisedWithNoListeners;
+        public event Action<ScriptableObject, UnityAction<TValue, TSender>, bool> OnEventSubscribed;
+        public event Action<ScriptableObject, UnityAction<TValue, TSender>, bool> OnEventUnsubscribed;
         public event Action<ScriptableObject, object> OnEventListenersCleared;
 
-        public void RaiseEvent()
+        public void RaiseEvent(TValue value, TSender sender)
         {
             if (EventChannel != null)
             {
-                EventChannel.Invoke();
-                OnEventRaised?.Invoke(this, EventChannel.GetInvocationList());
+                EventChannel.Invoke(value, sender);
+                OnEventRaised?.Invoke(this, value, sender, EventChannel.GetInvocationList());
             }
             else
-                OnEventRaisedWithNoListeners?.Invoke(this);
+                OnEventRaisedWithNoListeners?.Invoke(this, value, sender);
         }
 
-        public bool Subscribe(UnityAction action)
+        public bool Subscribe(UnityAction<TValue, TSender> action)
         {
             bool canSubscribe = !IsSubscribed(action);
 
@@ -45,7 +42,7 @@ namespace EventSystem
             return canSubscribe;
         }
 
-        public bool Unsubscribe(UnityAction action)
+        public bool Unsubscribe(UnityAction<TValue, TSender> action)
         {
             bool wasSubscribed = IsSubscribed(action);
 
@@ -61,13 +58,13 @@ namespace EventSystem
             if (EventChannel != null && EventChannel.GetInvocationList() != null)
             {
                 foreach (Delegate eventDelegate in EventChannel.GetInvocationList())
-                    EventChannel -= eventDelegate as UnityAction;
+                    EventChannel -= eventDelegate as UnityAction<TValue, TSender>;
             }
 
             OnEventListenersCleared?.Invoke(this, sender);
         }
 
-        private bool IsSubscribed(UnityAction action)
+        private bool IsSubscribed(UnityAction<TValue, TSender> action)
         {
             bool isSubscribed = false;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TowerDungeon.Audio;
 using TowerDungeon.Events;
 
 namespace TowerDungeon.Management
@@ -36,11 +37,15 @@ namespace TowerDungeon.Management
             playMusicRequestEventChannel.Subscribe(OnMusicPlayRequested);
         }
 
-        void OnMusicPlayRequested(AudioSO music)
+        void OnMusicPlayRequested(AudioSO music, object sender)
         {
+            if (currentMusicPlayer != null)
+                if (currentMusicPlayer.AudioData.Equals(music))
+                    return;
+
             var instance = Instantiate(BGMAudioSource, this.transform);
 
-            currentMusicPlayer?.FadeOutAndDestroy();
+            currentMusicPlayer?.StopAndDestroy();
             currentMusicPlayer = instance.GetComponent<AudioPlayer>();
             currentMusicPlayer.Play(music);
         }

@@ -7,13 +7,13 @@ namespace EventSystem
     /// A flexible handler for events in the form of a MonoBehaviour. Responses can be connected directly from the Unity Inspector.
     /// The channel must be overrided with "new" to show valid ScriptableObjects in the Inspector.
     /// </summary>
-    public abstract class BaseEventListener<TValue> : MonoBehaviour
+    public abstract class BaseEventListener<TValue, TSender> : MonoBehaviour
     {
         [System.NonSerialized] // For editor errors with "new"
-        protected EventChannelBaseSO<TValue> _channel = default;
+        protected EventChannelBaseSO<TValue, TSender> _channel = default;
 
         [SerializeField]
-        protected BaseEvent<TValue> OnEventRaised;
+        protected BaseEvent<TValue, TSender> OnEventRaised;
 
         private void OnEnable()
         {
@@ -27,10 +27,10 @@ namespace EventSystem
                 _channel?.Unsubscribe(Respond);
         }
 
-        private void Respond(TValue value)
+        private void Respond(TValue value, TSender sender)
         {
             if (OnEventRaised != null)
-                OnEventRaised.Invoke(value);
+                OnEventRaised.Invoke(value, sender);
         }
     }
 }

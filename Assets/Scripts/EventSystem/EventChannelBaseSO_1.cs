@@ -1,60 +1,84 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace EventSystem
 {
-    public abstract class EventChannelBaseSO<T> : ScriptableObject
+    public abstract class EventChannelBaseSO<TValue> : ScriptableObject
     {
 #if UNITY_EDITOR
         [SerializeField] [TextArea]
         private string editorDescription;
 #endif
 
-        private event UnityAction<T> OnEventRaised;
+        private event UnityAction<TValue> EventChannel;
 
-        public void RaiseEvent(T value)
+        public event Action<ScriptableObject, TValue, Delegate[]> OnEventRaised;
+        public event Action<ScriptableObject, TValue> OnEventRaisedWithNoListeners;
+        public event Action<ScriptableObject, UnityAction<TValue>, bool> OnEventSubscribed;
+        public event Action<ScriptableObject, UnityAction<TValue>, bool> OnEventUnsubscribed;
+        public event Action<ScriptableObject, object> OnEventListenersCleared;
+
+        public void RaiseEvent(TValue value)
         {
-            if (OnEventRaised != null)
+            if (EventChannel != null)
             {
-                OnEventRaised.Invoke(value);
-                EventRaised(value);
+                EventChannel.Invoke(value);
+                OnEventRaised?.Invoke(this, value, EventChannel.GetInvocationList());
             }
             else
-                EventRaisedWithNoListeners(value);
+                OnEventRaisedWithNoListeners?.Invoke(this, value);
         }
 
-        public void Subscribe(UnityAction<T> action)
+        public bool Subscribe(UnityAction<TValue> action)
         {
-            if (OnEventRaised != null && OnEventRaised.GetInvocationList() != null)
-                if (OnEventRaised.GetInvocationList().Contains(action))
-                    return;
+            bool canSubscribe = !IsSubscribed(action);
 
-            OnEventRaised += action;
-            EventSubscribed(action);
+            if (canSubscribe)
+                EventChannel += action;
+
+            OnEventSubscribed?.Invoke(this, action, canSubscribe);
+            return canSubscribe;
         }
 
-        public void Unsubscribe(UnityAction<T> action)
+        public bool Unsubscribe(UnityAction<TValue> action)
         {
-            OnEventRaised -= action;
-            EventUnsubscribed(action);
+            bool wasSubscribed = IsSubscribed(action);
+
+            if (wasSubscribed)
+                EventChannel -= action;
+
+            OnEventUnsubscribed?.Invoke(this, action, wasSubscribed);
+            return wasSubscribed;
         }
 
-        public void UnsubscribeAll()
+        public void UnsubscribeAll(object sender)
         {
-            if (OnEventRaised != null && OnEventRaised.GetInvocationList() != null)
+            if (EventChannel != null && EventChannel.GetInvocationList() != null)
             {
-                foreach (System.Delegate eventDelegate in OnEventRaised.GetInvocationList())
-                    OnEventRaised -= eventDelegate as UnityAction<T>;
+                foreach (Delegate eventDelegate in EventChannel.GetInvocationList())
+                    EventChannel -= eventDelegate as UnityAction<TValue>;
             }
 
-            EventListenersCleared();
+            OnEventListenersCleared?.Invoke(this, sender);
         }
 
-        protected virtual void EventRaised(T value) { }
-        protected virtual void EventRaisedWithNoListeners(T value) { }
-        protected virtual void EventSubscribed(UnityAction<T> action) { }
-        protected virtual void EventUnsubscribed(UnityAction<T> action) { }
-        protected virtual void EventListenersCleared() { }
+        private bool IsSubscribed(UnityAction<TValue> action)
+        {
+            bool isSubscribed = false;
+
+            if (EventChannel != null && EventChannel.GetInvocationList() != null)
+                if (EventChannel.GetInvocationList().Contains(action))
+                    isSubscribed = true;
+
+            return isSubscribed;
+        }
+
+        // Global Debug
+        //private void OnEnable()
+        //    => this.OnEventRaised += EventDebugUtilities.DebugRaisedEvent;
+        //private void OnDisable()
+        //    => this.OnEventRaised -= EventDebugUtilities.DebugRaisedEvent;
     }
 }

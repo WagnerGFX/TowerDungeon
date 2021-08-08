@@ -39,7 +39,7 @@ namespace TowerDungeon
 
             GameSettings.EnemyPoints = 0;
 
-            gameStateChangeRequestChannel?.RaiseEvent(GameState.Playing);
+            gameStateChangeRequestChannel?.RaiseEvent(GameState.Playing, this);
         }
     }
 }

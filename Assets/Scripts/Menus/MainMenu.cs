@@ -20,7 +20,7 @@ namespace TowerDungeon.UI
         [SerializeField]
         private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
         [SerializeField]
-        private VoidEventChannelSO exitGameRequestEventChannel;
+        private BasicEventChannelSO exitGameRequestEventChannel;
 
         [SerializeField]
         private float buttonFunctionDelay = 0.5f;
@@ -31,16 +31,16 @@ namespace TowerDungeon.UI
         }
 
         private void LoadChoosePanel()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuChooseChar);
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuChooseChar, this);
 
         private void LoadCredits()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuCredits);
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuCredits, this);
 
         private void LoadRank()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuRank);
+            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuRank, this);
 
         private void ExitGame()
-            => exitGameRequestEventChannel.RaiseEvent();
+            => exitGameRequestEventChannel.RaiseEvent(this);
 
         public void OnButtonPressed_Play()
             => Invoke(nameof(LoadChoosePanel), buttonFunctionDelay);

@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDungeon
+namespace TowerDungeon.Audio
 {
     public class AudioPlayer : MonoBehaviour
     {
         private AudioSource audioSource;
         private AudioSO audioData;
+        public  AudioSO AudioData { get => audioData; }
 
         void Awake()
         {
@@ -17,10 +17,10 @@ namespace TowerDungeon
         public void Play(AudioSO audioData)
         {
             this.audioData = audioData;
-
             audioSource.clip = audioData.AudioClip;
             audioSource.Play();
         }
+
 
         public void Pause()
         {
@@ -39,20 +39,20 @@ namespace TowerDungeon
             Destroy(this.gameObject);
         }
 
-        public void FadeOutAndDestroy(float fadeTime = 1000)
+        public void FadeOutAndDestroy(float fadeOutTime = 1000)
         {
-            StartCoroutine(FadeOut(fadeTime));
+            StartCoroutine(FadeOut(fadeOutTime));
 
             StopAndDestroy();
         }
 
-        private IEnumerator FadeOut(float fadeTime)
+        private IEnumerator FadeOut(float fadeOutTime)
         {
             float startVolume = audioSource.volume;
 
             while (audioSource.volume > 0)
             {
-                audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+                audioSource.volume -= startVolume * Time.deltaTime / fadeOutTime;
 
                 yield return null;
             }

@@ -112,7 +112,7 @@ namespace TowerDungeon.Character
         {
             if (life <= 0)
             {
-                gameStateChangeRequestChannel?.RaiseEvent(GameState.GameOver);
+                gameStateChangeRequestChannel?.RaiseEvent(GameState.GameOver, this);
             }
         }
     }

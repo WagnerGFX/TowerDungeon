@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 535513510}
   - component: {fileID: 535513509}
   - component: {fileID: 535513508}
-  - component: {fileID: 535513511}
   - component: {fileID: 535513512}
   m_Layer: 0
   m_Name: Main Camera
@@ -206,21 +205,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &535513511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535513507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73fc9d84a6226c74fb56b146791abab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneTitleMenu: {fileID: 11400000, guid: 74e074d6424735443bdb0040fb6538e1, type: 2}
 --- !u!114 &535513512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +383,8 @@ GameObject:
   - component: {fileID: 1269952467}
   - component: {fileID: 1269952466}
   - component: {fileID: 1269952465}
+  - component: {fileID: 1269952469}
+  - component: {fileID: 1269952470}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -433,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
@@ -488,6 +476,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1269952469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269952464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731220001e500e242b2506dfa0903d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  functionDelay: 0.5
+  sceneToLoad: {fileID: 11400000, guid: 74e074d6424735443bdb0040fb6538e1, type: 2}
+  loadSceneRequestEventChannel: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
+--- !u!114 &1269952470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269952464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccfdefed72dc5cb4abcbebb29dc72697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 100
+  canvasRect: {fileID: 1269952468}
+  creditsRect: {fileID: 2109416479}
 --- !u!1001 &1449463404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -615,7 +633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Back
 --- !u!222 &1652369920
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -638,7 +656,7 @@ GameObject:
   - component: {fileID: 1802454139}
   - component: {fileID: 1802454142}
   m_Layer: 5
-  m_Name: back
+  m_Name: backButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,8 +679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 19.5, y: 26}
-  m_SizeDelta: {x: 96.87372, y: 93.12619}
+  m_AnchoredPosition: {x: 15, y: 15}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1802454139
 MonoBehaviour:
@@ -759,13 +777,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 2
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 535513511}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: Back
+        - m_Target: {fileID: 1269952469}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.SceneTransition, Assembly-CSharp
+          m_MethodName: OnButtonPress_LoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1269952469}
+          m_TargetAssemblyTypeName: TowerDungeon.UI.SceneTransition, Assembly-CSharp
+          m_MethodName: OnButtonPress_LoadScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -889,7 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1802454137}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1995758659
@@ -904,7 +938,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2032799868
 GameObject:
@@ -918,7 +952,7 @@ GameObject:
   - component: {fileID: 2032799871}
   - component: {fileID: 2032799870}
   m_Layer: 5
-  m_Name: background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -996,7 +1030,7 @@ GameObject:
   - component: {fileID: 2109416480}
   - component: {fileID: 2109416484}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CreditsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,11 +1050,11 @@ RectTransform:
   m_Father: {fileID: 1269952468}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 73}
-  m_SizeDelta: {x: 2036.5698, y: 1410.5071}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 49, y: 176}
+  m_SizeDelta: {x: 518.8142, y: 1157.4446}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!95 &2109416480
 Animator:
   serializedVersion: 3
@@ -1029,7 +1063,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109416478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8bbcc22ea9480274ebf0a2491ae995cc, type: 2}
   m_CullingMode: 0
@@ -1077,13 +1111,13 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 70597e727a78afa8584671cc1bf3a427, type: 3}
-    m_FontSize: 10
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 300
     m_Alignment: 1
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1109,9 +1143,7 @@ MonoBehaviour:
 
     Daniela Fialho
 
-
-
-'
+    Wagner Ferreira'
 --- !u!222 &2109416483
 CanvasRenderer:
   m_ObjectHideFlags: 0

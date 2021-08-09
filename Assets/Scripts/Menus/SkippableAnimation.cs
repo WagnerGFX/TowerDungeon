@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 using TowerDungeon.Events;
 
-namespace TowerDungeon
+namespace TowerDungeon.Menus
 {
+    [RequireComponent(typeof(Animator))]
     public class SkippableAnimation : MonoBehaviour
     {
         [SerializeField]
@@ -16,26 +17,20 @@ namespace TowerDungeon
         private Animator animator;
 
         private void Awake()
-        {
-            animator = GetComponent<Animator>();
-        }
+            => animator = GetComponent<Animator>();
 
         private void OnEnable()
-        {
-            animationSkipRequestEventChannel.Subscribe(OnAnimationSkipRequested);
-        }
+            => animationSkipRequestEventChannel?.Subscribe(OnAnimationSkipRequested);
 
         private void OnDisable()
-        {
-            animationSkipRequestEventChannel.Unsubscribe(OnAnimationSkipRequested);
-        }
+            => animationSkipRequestEventChannel?.Unsubscribe(OnAnimationSkipRequested);
 
         void OnAnimationSkipRequested(CallbackContext context)
         {
-            if(context.action.phase == InputActionPhase.Started)
+            if (context.action.phase == InputActionPhase.Started)
             {
                 animator.SetBool(skipParameter, true);
-                this.enabled = false;
+                Destroy(this);
             }
         }
     }

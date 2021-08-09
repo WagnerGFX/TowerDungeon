@@ -1,27 +1,23 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using TowerDungeon.Events;
 
 namespace TowerDungeon.UI
 {
     public class SceneTransition : MonoBehaviour
     {
-        [SerializeField]
-        private int time;
+        [SerializeField] [Min(0)]
+        private float functionDelay = 0.5f;
 
         [SerializeField]
-        private SceneDataSO sceneMainTitle;
+        private SceneDataSO sceneToLoad;
 
-        void Update()
-        {
-            StartCoroutine(nameof(LoadScene));
-        }
+        [SerializeField]
+        private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
 
-        public IEnumerator LoadScene()
-        {
-            yield return new WaitForSeconds(time);
-            SceneManager.LoadScene(sceneMainTitle.SceneName);
-        }
+        public void OnButtonPress_LoadScene()
+            => Invoke(nameof(LoadScene), functionDelay);
+
+        private void LoadScene()
+            => loadSceneRequestEventChannel.RaiseEvent(sceneToLoad, this);
     }
-
 }

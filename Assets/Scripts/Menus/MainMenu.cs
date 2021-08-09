@@ -1,7 +1,7 @@
 using UnityEngine;
 using TowerDungeon.Events;
 
-namespace TowerDungeon.UI
+namespace TowerDungeon.Menus
 {
     public class MainMenu : MonoBehaviour
     {

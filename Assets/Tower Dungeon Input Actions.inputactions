@@ -242,7 +242,7 @@
                 },
                 {
                     "name": "Submit",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "525e4ff2-c62c-4aad-b4ed-415655631423",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -250,7 +250,7 @@
                 },
                 {
                     "name": "Cancel",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "40456468-12ed-4de0-900b-2a30dba784f5",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -266,7 +266,7 @@
                 },
                 {
                     "name": "Click",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "4fe7b1ce-ad07-466d-a8ce-32e4c287f927",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -282,17 +282,17 @@
                 },
                 {
                     "name": "MiddleClick",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "2add9758-0b08-4b1e-acf3-19f186c6308c",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "RightClick",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "aa99832e-e215-4973-b715-b6dfc5689c88",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 },

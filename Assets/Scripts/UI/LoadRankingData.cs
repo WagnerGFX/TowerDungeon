@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace TowerDungeon.UI
 {
-    public class InitializeSaveData : MonoBehaviour
+    public class LoadRankingData : MonoBehaviour
     {
         [SerializeField]
         private Text pointsTxt, coinsTxt;

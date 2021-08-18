@@ -902,14 +902,6 @@ MonoBehaviour:
     m_ActionId: 525e4ff2-c62c-4aad-b4ed-415655631423
     m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 40456468-12ed-4de0-900b-2a30dba784f5
-    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 46753346-63fd-4285-8b4b-b39d6c863520
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 1f5646e1728f1a84bbd8432557e4813a, type: 2}
         m_TargetAssemblyTypeName: EventSystem.EventChannelBaseSO`1[[UnityEngine.InputSystem.InputAction+CallbackContext,
@@ -924,6 +916,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_ActionId: 40456468-12ed-4de0-900b-2a30dba784f5
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 46753346-63fd-4285-8b4b-b39d6c863520
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
     m_ActionId: 4fe7b1ce-ad07-466d-a8ce-32e4c287f927
     m_ActionName: UI/Click[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -1712,13 +1712,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739d3e7e1ce57712bb50c5eb260ad427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPanel: {fileID: 0}
+  globalEventManager: {fileID: 11400000, guid: 9aad12ac02c7f0744b45994a1b6273bc, type: 2}
+  buttonFunctionDelay: 0.5
   sceneMenuChooseChar: {fileID: 11400000, guid: 25d375b6a48efd944a55359daa74ec37, type: 2}
   sceneMenuCredits: {fileID: 11400000, guid: 174170ce5bc92fb45a169d66d42b2316, type: 2}
   sceneMenuRank: {fileID: 11400000, guid: 8535214749fa5364f91cc7af871e7099, type: 2}
-  loadSceneRequestEventChannel: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
-  exitGameRequestEventChannel: {fileID: 11400000, guid: 9c28e7dac12ed3147b5134888f4f8657, type: 2}
-  buttonFunctionDelay: 0.5
 --- !u!1 &1670383795
 GameObject:
   m_ObjectHideFlags: 0

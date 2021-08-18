@@ -12,12 +12,12 @@ namespace TowerDungeon.UI
         private SceneDataSO sceneToLoad;
 
         [SerializeField]
-        private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
+        private EventManagerSO globalEventManager;
 
         public void OnButtonPress_LoadScene()
             => Invoke(nameof(LoadScene), functionDelay);
 
         private void LoadScene()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneToLoad, this);
+            => globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneToLoad, this);
     }
 }

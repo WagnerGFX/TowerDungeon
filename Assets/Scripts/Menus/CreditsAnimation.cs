@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TowerDungeon
+namespace TowerDungeon.Menus
 {
     public class CreditsAnimation : MonoBehaviour
     {

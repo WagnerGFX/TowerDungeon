@@ -466,13 +466,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 527770032}
-  - {fileID: 1713521642}
-  - {fileID: 292478892}
+  - {fileID: 527770036}
+  - {fileID: 1713521646}
+  - {fileID: 292478896}
   characterMoveAnim: {fileID: 1976289802}
   arrowNext: {fileID: 257770507}
   arrowPrev: {fileID: 174450093}
-  loadSceneRequestEventChannel: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
+  globalEventManager: {fileID: 11400000, guid: 9aad12ac02c7f0744b45994a1b6273bc, type: 2}
   sceneGame: {fileID: 11400000, guid: 8c24d016331417046af6662dc5afb44a, type: 2}
   sceneMainMenu: {fileID: 11400000, guid: 74e074d6424735443bdb0040fb6538e1, type: 2}
 --- !u!1 &673096849

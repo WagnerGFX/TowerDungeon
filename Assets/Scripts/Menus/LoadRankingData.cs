@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDungeon.UI
+namespace TowerDungeon.Menus
 {
     public class LoadRankingData : MonoBehaviour
     {

@@ -5,8 +5,11 @@ namespace TowerDungeon.Menus
 {
     public class MainMenu : MonoBehaviour
     {
-        //[SerializeField]
-        //private GameObject mainPanel;
+        [SerializeField]
+        private EventManagerSO globalEventManager;
+
+        [SerializeField]
+        private float buttonFunctionDelay = 0.5f;
 
         [Header("Scene Data")]
         [SerializeField]
@@ -16,31 +19,17 @@ namespace TowerDungeon.Menus
         [SerializeField]
         private SceneDataSO sceneMenuRank;
 
-        [Header("Event Channels")]
-        [SerializeField]
-        private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
-        [SerializeField]
-        private BasicEventChannelSO exitGameRequestEventChannel;
-
-        [SerializeField]
-        private float buttonFunctionDelay = 0.5f;
-
-        private void Start()
-        {
-            //mainPanel.SetActive(false);
-        }
-
         private void LoadChoosePanel()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuChooseChar, this);
+            => globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneMenuChooseChar, this);
 
         private void LoadCredits()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuCredits, this);
+            => globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneMenuCredits, this);
 
         private void LoadRank()
-            => loadSceneRequestEventChannel.RaiseEvent(sceneMenuRank, this);
+            => globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneMenuRank, this);
 
         private void ExitGame()
-            => exitGameRequestEventChannel.RaiseEvent(this);
+            => globalEventManager.OnExitGameRequested.RaiseEvent(this);
 
         public void OnButtonPressed_Play()
             => Invoke(nameof(LoadChoosePanel), buttonFunctionDelay);

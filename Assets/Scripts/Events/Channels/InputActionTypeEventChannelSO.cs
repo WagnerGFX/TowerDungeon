@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using EventSystem;
-using TowerDungeon.Management;
+using TowerDungeon.Input;
 
 namespace TowerDungeon.Events
 {

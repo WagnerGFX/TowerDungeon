@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   functionDelay: 0.5
   sceneToLoad: {fileID: 11400000, guid: 74e074d6424735443bdb0040fb6538e1, type: 2}
-  loadSceneRequestEventChannel: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
+  globalEventManager: {fileID: 11400000, guid: 9aad12ac02c7f0744b45994a1b6273bc, type: 2}
 --- !u!114 &1269952470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 1995758659}
   - component: {fileID: 1995758658}
   - component: {fileID: 1995758657}
+  - component: {fileID: 1995758660}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -914,6 +915,104 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995758660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995758656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6405d962fef03c94c974b66a9384afab, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 1995758657}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3d8e1513-03f2-4713-91f7-fc7ec7133afc
+    m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a0178e77-d770-413b-b98b-40302c36919d
+    m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b449483-c597-4614-9a96-73ced82b6bb0
+    m_ActionName: Player/Attack[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 896765ff-79df-4afe-a868-05347df47b8f
+    m_ActionName: Player/Pause Game[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8cbcc676-fc08-45bd-8854-0b6d7036daca
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 525e4ff2-c62c-4aad-b4ed-415655631423
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1269952469}
+        m_TargetAssemblyTypeName: TowerDungeon.UI.SceneTransition, Assembly-CSharp
+        m_MethodName: OnButtonPress_LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 40456468-12ed-4de0-900b-2a30dba784f5
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 46753346-63fd-4285-8b4b-b39d6c863520
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4fe7b1ce-ad07-466d-a8ce-32e4c287f927
+    m_ActionName: UI/Click[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bdad59ba-3050-40c4-a42a-c909f8c7736b
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2add9758-0b08-4b1e-acf3-19f186c6308c
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aa99832e-e215-4973-b715-b6dfc5689c88
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d310bee-0416-4d2f-976a-dc66abe66faa
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f427cc4-f579-4c86-8e42-011e22e69765
+    m_ActionName: UI/TrackedDeviceOrientation
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UI
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 535513509}
 --- !u!1 &2032799868
 GameObject:
   m_ObjectHideFlags: 0

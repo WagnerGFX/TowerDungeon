@@ -5,7 +5,7 @@ using TowerDungeon.Management;
 
 namespace TowerDungeon.Menus
 {
-    public class CharacterSelectionController : MonoBehaviour
+    public class CharacterSelection : MonoBehaviour
     {
         [SerializeField]
         private CharacterIdentity[] characters;
@@ -18,7 +18,7 @@ namespace TowerDungeon.Menus
 
         [Header("Scene Change")]
         [SerializeField]
-        private LoadSceneRequestEventChannelSO loadSceneRequestEventChannel;
+        private EventManagerSO globalEventManager;
 
         [SerializeField]
         private SceneDataSO sceneGame;
@@ -50,7 +50,7 @@ namespace TowerDungeon.Menus
 
         public void OnGameStartRequested()
         {
-            loadSceneRequestEventChannel.RaiseEvent(sceneGame, this);
+            globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneGame, this);
         }
 
         public void OnChangeCharacter_Next()
@@ -101,7 +101,7 @@ namespace TowerDungeon.Menus
         private void OnReturnToTitleRequested(CallbackContext context)
         {
             if (!isSelectionCompleted && context.performed)
-                loadSceneRequestEventChannel.RaiseEvent(sceneMainMenu, this);
+                globalEventManager.OnLoadSceneRequested.RaiseEvent(sceneMainMenu, this);
         }
 
         private void ChangeSelectedCharacter()

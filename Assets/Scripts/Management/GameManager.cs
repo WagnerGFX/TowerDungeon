@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TowerDungeon.Events;
-using TowerDungeon.Character;
 
 namespace TowerDungeon.Management
 {

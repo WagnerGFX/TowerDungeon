@@ -4,13 +4,6 @@ using TowerDungeon.Events;
 
 namespace TowerDungeon.Management
 {
-    public enum InputActionType
-    {
-        Disabled,
-        UI,
-        Player
-    }
-
     public class InputManager : MonoSingleton<InputManager>
     {
         [SerializeField]

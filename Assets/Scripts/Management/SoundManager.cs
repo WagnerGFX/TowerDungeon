@@ -4,13 +4,10 @@ using TowerDungeon.Events;
 
 namespace TowerDungeon.Management
 {
-    public class SoundManager : MonoBehaviour
+    public class SoundManager : MonoSingleton<SoundManager>
     {
-        public static SoundManager Instance { get; private set; }
-
-        [Header("Event Channels")]
         [SerializeField]
-        private PlayMusicRequestEventChannelSO playMusicRequestEventChannel;
+        private EventManagerSO globalEventManager;
 
         [Header("Prefabs")]
         [SerializeField]
@@ -18,26 +15,18 @@ namespace TowerDungeon.Management
 
         private AudioPlayer currentMusicPlayer;
 
-        void Awake()
+        private void OnEnable()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this);
-                SubscribeEvents();
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+
+            globalEventManager.OnPlayMusicRequested.Subscribe(OnMusicPlayRequested);
         }
 
-        private void SubscribeEvents()
+        private void OnDisable()
         {
-            playMusicRequestEventChannel.Subscribe(OnMusicPlayRequested);
+            globalEventManager.OnPlayMusicRequested.Unsubscribe(OnMusicPlayRequested);
         }
 
-        void OnMusicPlayRequested(AudioSO music, object sender)
+        private void OnMusicPlayRequested(AudioSO music, object sender)
         {
             if (currentMusicPlayer != null)
                 if (currentMusicPlayer.AudioData.Equals(music))
@@ -50,7 +39,7 @@ namespace TowerDungeon.Management
             currentMusicPlayer.Play(music);
         }
 
-        void OnMusicStopRequested()
+        private void OnMusicStopRequested()
         {
             currentMusicPlayer.StopAndDestroy();
         }

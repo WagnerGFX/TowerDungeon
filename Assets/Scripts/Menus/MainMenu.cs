@@ -5,8 +5,8 @@ namespace TowerDungeon.Menus
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject mainPanel;
+        //[SerializeField]
+        //private GameObject mainPanel;
 
         [Header("Scene Data")]
         [SerializeField]
@@ -27,7 +27,7 @@ namespace TowerDungeon.Menus
 
         private void Start()
         {
-            mainPanel.SetActive(false);
+            //mainPanel.SetActive(false);
         }
 
         private void LoadChoosePanel()

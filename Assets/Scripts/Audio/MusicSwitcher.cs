@@ -6,7 +6,7 @@ namespace TowerDungeon.Audio
     public class MusicSwitcher : MonoBehaviour
     {
         [SerializeField]
-        private PlayMusicRequestEventChannelSO playMusicRequestEventChannel;
+        private EventManagerSO globalEventManager;
 
         [SerializeField]
         private AudioSO MusicToPlay;
@@ -16,7 +16,7 @@ namespace TowerDungeon.Audio
 
         void Start()
         {
-            playMusicRequestEventChannel.RaiseEvent(MusicToPlay, this);
+            globalEventManager.OnPlayMusicRequested.RaiseEvent(MusicToPlay, this);
 
             if (destroyGameObjectAfter)
                 Destroy(gameObject);

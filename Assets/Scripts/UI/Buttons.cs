@@ -1,5 +1,5 @@
-using TowerDungeon.Character;
 using UnityEngine;
+using TowerDungeon.Character;
 
 namespace TowerDungeon.UI
 {
@@ -20,24 +20,26 @@ namespace TowerDungeon.UI
 
         void Start()
         {
-            int characterClass = GameSettings.CharacterClass;
+            CharacterClass characterClass = GameSettings.CharacterClass;
 
-            if (characterClass == 1)
+            switch (characterClass)
             {
-                playerControl_script = GameObject.Find("Guerreiro").GetComponent<PlayerControl>();
-                playerAnimations_script = GameObject.Find("Guerreiro").GetComponent<PlayerAnimations>();
-            }
-            else if (characterClass == 2)
-            {
-                playerControl_script = GameObject.Find("Arqueiro").GetComponent<PlayerControl>();
-                playerAnimations_script = GameObject.Find("Arqueiro").GetComponent<PlayerAnimations>();
-            }
-            else if (characterClass == 3)
-            {
+                case CharacterClass.Warrior:
+                    playerControl_script = GameObject.Find("Guerreiro").GetComponent<PlayerControl>();
+                    playerAnimations_script = GameObject.Find("Guerreiro").GetComponent<PlayerAnimations>();
+                    break;
 
-                playerControl_script = GameObject.Find("Mago").GetComponent<PlayerControl>();
-                playerAnimations_script = GameObject.Find("Mago").GetComponent<PlayerAnimations>();
+                case CharacterClass.Archer:
+                    playerControl_script = GameObject.Find("Arqueiro").GetComponent<PlayerControl>();
+                    playerAnimations_script = GameObject.Find("Arqueiro").GetComponent<PlayerAnimations>();
+                    break;
+
+                case CharacterClass.Mage:
+                    playerControl_script = GameObject.Find("Mago").GetComponent<PlayerControl>();
+                    playerAnimations_script = GameObject.Find("Mago").GetComponent<PlayerAnimations>();
+                    break;
             }
+
             InitializeBooleanDirections();
         }
 

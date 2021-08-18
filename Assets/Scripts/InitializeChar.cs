@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TowerDungeon.Management;
 using TowerDungeon.Events;
+using TowerDungeon.Character;
 
 namespace TowerDungeon
 {
@@ -14,28 +15,30 @@ namespace TowerDungeon
 
         void Awake()
         {
-            int characterClass = GameSettings.CharacterClass;
+            CharacterClass characterClass = GameSettings.CharacterClass;
 
-            if (characterClass == 1)
+            switch (characterClass)
             {
-                Debug.Log($"id: {characterClass}");
-                warrior.SetActive(true);
-                archer.SetActive(false);
-                mage.SetActive(false);
+                case CharacterClass.Warrior:
+                    warrior.SetActive(true);
+                    archer.SetActive(false);
+                    mage.SetActive(false);
+                    break;
+
+                case CharacterClass.Archer:
+                    warrior.SetActive(false);
+                    archer.SetActive(true);
+                    mage.SetActive(false);
+                    break;
+
+                case CharacterClass.Mage:
+                    warrior.SetActive(false);
+                    archer.SetActive(false);
+                    mage.SetActive(true);
+                    break;
             }
-            else if (characterClass == 2)
-            {
-                Debug.Log("id:" + characterClass);
-                archer.SetActive(true);
-                warrior.SetActive(false);
-                mage.SetActive(false);
-            }
-            else if (characterClass == 3)
-            {
-                mage.SetActive(true);
-                archer.SetActive(false);
-                warrior.SetActive(false);
-            }
+
+            Debug.Log($"id: {characterClass}");
 
             GameSettings.EnemyPoints = 0;
 

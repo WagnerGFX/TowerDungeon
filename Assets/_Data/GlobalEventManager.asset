@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba0ca2cca36ebc844b366a6d9fa0dfd8, type: 3}
+  m_Name: GlobalEventManager
+  m_EditorClassIdentifier: 
+  onGameStateRequested: {fileID: 11400000, guid: 42fa5f1227ce28f4f839dcd3f75c3848, type: 2}
+  onGameStateChanged: {fileID: 11400000, guid: 8f4ddadba72045249a15b6b10ffcd077, type: 2}
+  onLoadSceneRequested: {fileID: 11400000, guid: e83fcaefa5d580e42ab679c8e78bd2c0, type: 2}
+  onExitGameRequested: {fileID: 11400000, guid: 9c28e7dac12ed3147b5134888f4f8657, type: 2}
+  onPlayMusicRequested: {fileID: 11400000, guid: 3264db1e3724e614bbb87ab6922bebb8, type: 2}
+  onInputChangeRequested: {fileID: 11400000, guid: 806dd7aedcb5d0f42b080733fd02495e, type: 2}

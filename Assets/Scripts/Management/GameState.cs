@@ -1,10 +1,13 @@
-
 namespace TowerDungeon.Management
 {
     public enum GameState
     {
-        InitialState,
+        None,
+        Menus,
+        Loading,
         Playing,
-        GameOver
-    } 
+        GameOver,
+        Cutscene,
+        Paused
+    }
 }

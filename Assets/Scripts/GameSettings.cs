@@ -1,4 +1,6 @@
 using UnityEngine;
+using TowerDungeon.Character;
+
 namespace TowerDungeon
 {
     public class GameSettings
@@ -9,10 +11,10 @@ namespace TowerDungeon
         private static readonly string coinPoints = "CoinPoints";
         private static readonly string pointsRecord = "PointsRecord";
 
-        public static int CharacterClass
+        public static CharacterClass CharacterClass
         {
-            get => PlayerPrefs.GetInt(characterClass);
-            set => PlayerPrefs.SetInt(characterClass, value);
+            get => (CharacterClass)PlayerPrefs.GetInt(characterClass);
+            set => PlayerPrefs.SetInt(characterClass, (int)value);
         }
 
         public static int EnemyPoints

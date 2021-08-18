@@ -1,5 +1,5 @@
 using TowerDungeon.Objects;
-using TowerDungeon.Management;
+using TowerDungeon.Input;
 using System.Collections;
 using UnityEngine;
 
@@ -149,20 +149,20 @@ namespace TowerDungeon.Character
         public void PCMovement()
         {
             IdlePosition();
-            if (Input.GetKeyDown(KeyCode.Space))
-                SimpleAttack();
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //    SimpleAttack();
 
-            if (Input.GetKey(KeyCode.UpArrow))
-                MoveUp();
+            //if (Input.GetKey(KeyCode.UpArrow))
+            //    MoveUp();
 
-            if (Input.GetKey(KeyCode.DownArrow))
-                MoveDown();
+            //if (Input.GetKey(KeyCode.DownArrow))
+            //    MoveDown();
 
-            if (Input.GetKey(KeyCode.LeftArrow))
-                MoveLeft();
+            //if (Input.GetKey(KeyCode.LeftArrow))
+            //    MoveLeft();
 
-            if (Input.GetKey(KeyCode.RightArrow))
-                MoveRight();
+            //if (Input.GetKey(KeyCode.RightArrow))
+            //    MoveRight();
         }
     }
 }

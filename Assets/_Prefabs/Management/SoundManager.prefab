@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a45e78566f96445b1989d5e79d25a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playMusicRequestEventChannel: {fileID: 11400000, guid: 3264db1e3724e614bbb87ab6922bebb8, type: 2}
+  globalEventManager: {fileID: 11400000, guid: 9aad12ac02c7f0744b45994a1b6273bc, type: 2}
   BGMAudioSource: {fileID: 6943654106069646407, guid: 75eb6afb81549db46a8a66da967b1a51, type: 3}

@@ -1,54 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TowerDungeon.Events;
+using TowerDungeon.Character;
 
 namespace TowerDungeon.Management
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : MonoSingleton<GameManager>
     {
-        [Header("Event Channels")]
         [SerializeField]
-        private LoadSceneRequestEventChannelSO loadSceneEventChannel;
+        private EventManagerSO globalEventManager;
 
-        [SerializeField]
-        private GameStateChangedEventChannelSO gameStateChangedEventChannel;
+        public GameState GameState { get; private set; } = GameState.None;
 
-        [SerializeField]
-        private GameStateRequestEventChannelSO gameStateRequestEventChannel;
-
-        [SerializeField]
-        private BasicEventChannelSO exitGameRequestEventChannel;
-
-        [Header("Remove later")]
-        [SerializeField]
-        private GameObject warrior, archer;
-
-        private int characterClass;
-
-        public GameState GameState { get; private set; } = GameState.InitialState;
-
-        public static GameManager Instance { get; private set; }
-
-        private void Awake()
+        private void OnEnable()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(this);
-                SubscribeEvents();
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
+            globalEventManager.OnLoadSceneRequested.Subscribe(OnLoadSceneRequested);
+            globalEventManager.OnGameStateRequested.Subscribe(OnGameStateChangeRequested);
+            globalEventManager.OnGameStateChanged.Subscribe(OnGameStateChanged);
+            globalEventManager.OnExitGameRequested.Subscribe(OnGameExitRequested);
         }
 
-        private void SubscribeEvents()
+        private void OnDisable()
         {
-            loadSceneEventChannel.Subscribe(OnLoadSceneRequested);
-            gameStateRequestEventChannel.Subscribe(OnGameStateChangeRequested);
-            gameStateChangedEventChannel.Subscribe(OnGameStateChanged);
-            exitGameRequestEventChannel.Subscribe(OnGameExitRequested);
+            globalEventManager.OnLoadSceneRequested.Unsubscribe(OnLoadSceneRequested);
+            globalEventManager.OnGameStateRequested.Unsubscribe(OnGameStateChangeRequested);
+            globalEventManager.OnGameStateChanged.Unsubscribe(OnGameStateChanged);
+            globalEventManager.OnExitGameRequested.Unsubscribe(OnGameExitRequested);
         }
 
         private void OnLoadSceneRequested(SceneDataSO args, object sender)
@@ -70,7 +47,7 @@ namespace TowerDungeon.Management
 
             GameState = newGameState;
 
-            gameStateChangedEventChannel.RaiseEvent(args, this);
+            globalEventManager.OnGameStateChanged.RaiseEvent(args, this);
         }
 
         private void OnGameStateChanged(GameStateChangedEventArgs args, object sender)
@@ -81,26 +58,7 @@ namespace TowerDungeon.Management
                 //SceneManager.LoadScene(sceneGameOver.SceneName);
                 //SoundManager.Instance.StopMusicTheme();
             }
-            else if (args.NewGameState == GameState.Playing)
-            {
-                InitializePlayer(); //Mover para outro script
-            }
         }
 
-        private void InitializePlayer()
-        {
-            characterClass = GameSettings.CharacterClass;
-            warrior.SetActive(false);
-            archer.SetActive(false);
-
-            if (characterClass == 1)
-            {
-                warrior.SetActive(true);
-            }
-            else if (characterClass == 2)
-            {
-                archer.SetActive(true);
-            }
-        }
     } 
 }

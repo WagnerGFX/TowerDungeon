@@ -278,12 +278,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1328447878328093656, guid: 68810fbe301581f4f9ab966e3c8a2a39, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73cc159fb4ae2864ba814b045d101550, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.3333334, y: 1.8181819}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -389,7 +389,7 @@ SpriteRenderer:
   m_Size: {x: 1.664, y: 1.856}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &527770035
@@ -947,6 +947,7 @@ GameObject:
   - component: {fileID: 1713521644}
   - component: {fileID: 1713521643}
   - component: {fileID: 1713521646}
+  - component: {fileID: 1713521647}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -1014,12 +1015,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -8359420547566687043, guid: 1623126c991a85c4eac7bdef5f130a76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3e0bf329307024b9f7e58b25e5eb80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.1733333, y: 1.6}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1052,6 +1053,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 2
+--- !u!114 &1713521647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713521642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1195d946dbd3d74d8c75e6f687a2162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 1
 --- !u!1 &1965713787
 GameObject:
   m_ObjectHideFlags: 0

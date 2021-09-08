@@ -110,11 +110,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1871444039316433621}
   - component: {fileID: 8656377482579605940}
+  - component: {fileID: 5452928490776139514}
   - component: {fileID: 4378432535809165892}
   - component: {fileID: 1245975288025562610}
   - component: {fileID: 2765080067143656311}
   - component: {fileID: 6567331290449612491}
-  - component: {fileID: 5452928490776139514}
   - component: {fileID: 679171225466977030}
   - component: {fileID: 2849576487119761507}
   - component: {fileID: 2849576487119761509}
@@ -181,20 +181,39 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -925935345
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8359420547566687043, guid: 1623126c991a85c4eac7bdef5f130a76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f3e0bf329307024b9f7e58b25e5eb80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5452928490776139514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026083143587491048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9cb7cafb53848404794af9aac72b32cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &4378432535809165892
 Rigidbody2D:
   serializedVersion: 4
@@ -225,7 +244,7 @@ AudioSource:
   m_GameObject: {fileID: 5026083143587491048}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7633856535379005872, guid: f8b36e7f90e3405468d0d9ac0c714c7f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 106bb57466daa094db6d191d855f1b04, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -324,21 +343,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b559acc46dc4351d591a8d32c103d82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 2
+  characterBaseStats: {fileID: 11400000, guid: 972a765c5aab5631d82c05797f99c6dd, type: 2}
+  globalEventManager: {fileID: 11400000, guid: 9aad12ac02c7f0744b45994a1b6273bc, type: 2}
   attackFx: {fileID: 1245975288025562610}
-  archer: {fileID: 5026083143587491048}
-  warrior: {fileID: 0}
-  mage: {fileID: 0}
   firePrefab: {fileID: 0}
   arrowPrefab: {fileID: 718397686093822311, guid: a4715594bae926d4ba62751e505899f8, type: 3}
-  player: {fileID: 0}
-  spawnPos: {fileID: 641069643}
-  moveSpeed: 10
-  playerAnimationsScript: {fileID: 679171225466977030}
-  isAttack: 0
-  attackRate: 1
-  flipX: 0
-  player_scriptable: {fileID: 11400000, guid: 972a765c5aab5631d82c05797f99c6dd, type: 2}
-  myPower: 0
+  projectileSpawnPos: {fileID: 641069643}
 --- !u!114 &6567331290449612491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec160f20a3f7bd8fbf15b7a37b8e6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScriptalbe: {fileID: 11400000, guid: 972a765c5aab5631d82c05797f99c6dd, type: 2}
+  gameStateChangeRequestChannel: {fileID: 11400000, guid: 42fa5f1227ce28f4f839dcd3f75c3848, type: 2}
+  playerBaseStats: {fileID: 0}
   life: 0
   numberOfHearts: 4
   hearts:
@@ -365,25 +377,6 @@ MonoBehaviour:
   emptyHeart: {fileID: 21300000, guid: 318d3a2f2abdf34c081126462bfbfac7, type: 3}
   player_anim: {fileID: 679171225466977030}
   playerSprite: {fileID: 0}
---- !u!95 &5452928490776139514
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5026083143587491048}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9cb7cafb53848404794af9aac72b32cf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &679171225466977030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +423,7 @@ MonoBehaviour:
   player_sprite: {fileID: 0}
   playerLife_script: {fileID: 0}
   savePreviousPower: 0
-  playerControl_script: {fileID: 0}
+  playerControl: {fileID: 0}
   powerUpActivated: 0
   powerUpUI_script: {fileID: 0}
 --- !u!114 &2849576487119761513

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Tower Dungeon Input Actions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/_Assets/Tower Dungeon Input Actions.inputactions'
 
 using System;
 using System.Collections;

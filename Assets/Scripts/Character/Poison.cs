@@ -13,10 +13,10 @@ namespace TowerDungeon.Character
 
         void Start()
         {
-            playerLife_script = GetComponent<PlayerLife>();
-            player_sprite = GetComponent<SpriteRenderer>();
-            powerUpUI_script = GameObject.Find("panelpowerUp").GetComponent<PowerUpUI>();
-            powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImagePoison, isPoisoned);
+            //playerLife_script = GetComponent<PlayerLife>();
+            //player_sprite = GetComponent<SpriteRenderer>();
+            //powerUpUI_script = GameObject.Find("panelpowerUp").GetComponent<PowerUpUI>();
+            //powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImagePoison, isPoisoned);
         }
 
         IEnumerator poisonPlayer()

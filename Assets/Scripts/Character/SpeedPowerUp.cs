@@ -6,27 +6,22 @@ namespace TowerDungeon.Character
 {
     public class SpeedPowerUp : MonoBehaviour
     {
-        PlayerControl playerControl_script;
-        public float previousPower, powerSpeed, previusAttackRate, speedAttackRate;
-
-        float currentPower, time, currentAttack;
-        bool isSlow, isFast;
-        SpriteRenderer playerSprite;
-        public PowerUpUI powerUpUI_script;
+        private PlayerControl playerControl;
+        private SpriteRenderer playerSprite;
+        private PowerUpUI powerUpUI;
+        private bool isSlow = false;
+        private bool isFast = false;
+        private float speedModifier = 5f;
+        private float attackRateModifier = 1f; //In seconds
+        private float effectDuration = 10f;    //In seconds
 
         void Start()
         {
-            powerSpeed = 5;
-            speedAttackRate = 2;
-            playerControl_script = GetComponent<PlayerControl>();
-            previousPower = playerControl_script.moveSpeed;
-            previusAttackRate = playerControl_script.attackRate;
-            isSlow = false;
-            isFast = false;
+            playerControl = GetComponent<PlayerControl>();
             playerSprite = GetComponent<SpriteRenderer>();
-            powerUpUI_script = GameObject.Find("panelpowerUp").GetComponent<PowerUpUI>();
-            powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageFast, isFast);
-            powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageSlow, isSlow);
+            powerUpUI = GameObject.Find("panelpowerUp")?.GetComponent<PowerUpUI>();
+            powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageFast, isFast);
+            powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageSlow, isSlow);
         }
 
         void Update()
@@ -42,8 +37,8 @@ namespace TowerDungeon.Character
                 {
                     isFast = false;
                     playerSprite.color = Color.Lerp(Color.red, Color.white, Mathf.PingPong(2 * Time.time, .5f));
-                    powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageSlow, isSlow);
-                    powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageFast, isFast);
+                    powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageSlow, isSlow);
+                    powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageFast, isFast);
                 }
                 playerSprite.color = Color.Lerp(Color.red, Color.white, Mathf.PingPong(2 * Time.time, .5f));
             }
@@ -54,8 +49,8 @@ namespace TowerDungeon.Character
                 {
                     isSlow = false;
                     playerSprite.color = Color.Lerp(Color.blue, Color.white, Mathf.PingPong(2 * Time.time, .5f));
-                    powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageSlow, isSlow);
-                    powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageFast, isFast);
+                    powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageSlow, isSlow);
+                    powerUpUI?.ActiveFeedbackPowerUp(powerUpUI.ImageFast, isFast);
                 }
                 playerSprite.color = Color.Lerp(Color.blue, Color.white, Mathf.PingPong(2 * Time.time, .5f));
 
@@ -83,37 +78,34 @@ namespace TowerDungeon.Character
 
         public IEnumerator PowerUpSpeed()
         {
+            //Apply Effect
             isFast = true;
+            attackRateModifier = -0.7f; //Remove later
+            playerControl.moveSpeedModifier += speedModifier;
+            playerControl.attackRateModifier += attackRateModifier;
+            yield return new WaitForSeconds(effectDuration);
 
-            currentPower = playerControl_script.moveSpeed + powerSpeed;
-            playerControl_script.moveSpeed = currentPower;
-            currentAttack = 0.1f;
-            playerControl_script.attackRate = currentAttack;
-            Debug.Log("Speed com power" + playerControl_script.moveSpeed);
-            yield return new WaitForSeconds(10f);
-            playerSprite.color = Color.white;
+            //Revert Effect
             isFast = false;
-            playerControl_script.moveSpeed = previousPower;
-            playerControl_script.attackRate = previusAttackRate;
-
-            Debug.Log("Voltou ao normal: " + playerControl_script.moveSpeed);
+            playerSprite.color = Color.white;
+            playerControl.moveSpeedModifier -= speedModifier;
+            playerControl.attackRateModifier -= attackRateModifier;
         }
 
         public IEnumerator PowerDownSpeed()
         {
+            //Apply Effect
             isSlow = true;
+            attackRateModifier = 1f; //Remove later
+            playerControl.moveSpeedModifier += speedModifier;
+            playerControl.attackRateModifier += attackRateModifier;
+            yield return new WaitForSeconds(effectDuration);
 
-            currentPower = playerControl_script.moveSpeed - powerSpeed;
-            playerControl_script.moveSpeed = currentPower;
-            currentAttack = 2f;
-            playerControl_script.attackRate = currentAttack;
-
-            yield return new WaitForSeconds(10f);
-            playerSprite.color = Color.white;
+            //Revert Effect
             isSlow = false;
-            playerControl_script.moveSpeed = previousPower;
-            playerControl_script.attackRate = previusAttackRate;
-            Debug.Log("Voltou ao normal" + playerControl_script.moveSpeed);
+            playerSprite.color = Color.white;
+            playerControl.moveSpeedModifier -= speedModifier;
+            playerControl.attackRateModifier -= attackRateModifier;
         }
     }
 }

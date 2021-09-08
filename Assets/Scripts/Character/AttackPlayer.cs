@@ -17,7 +17,7 @@ namespace TowerDungeon.Character
         {
             if (other.gameObject.CompareTag("enemy"))
             {
-                other.GetComponent<EnemyLife>().TakeDamage(playerControlscript.myPower);
+                other.GetComponent<EnemyLife>().TakeDamage(playerControlscript.CurrentPower);
             }
         }
     }

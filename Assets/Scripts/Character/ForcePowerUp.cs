@@ -10,7 +10,7 @@ namespace TowerDungeon.Character
         public PlayerLife playerLife_script;
         public int savePreviousPower;
 
-        public PlayerControl playerControl_script;
+        public PlayerControl playerControl;
         int powered;
         public bool powerUpActivated = false;
         public PowerUpUI powerUpUI_script;
@@ -18,9 +18,9 @@ namespace TowerDungeon.Character
         void Start()
         {
             playerLife_script = GetComponent<PlayerLife>();
-            playerControl_script = GetComponent<PlayerControl>();
+            playerControl = GetComponent<PlayerControl>();
 
-            savePreviousPower = playerControl_script.myPower;
+            savePreviousPower = playerControl.CurrentPower;
             powered = 5;
             player_sprite = GetComponent<SpriteRenderer>();
             powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageForce, powerUpActivated);
@@ -46,13 +46,13 @@ namespace TowerDungeon.Character
         IEnumerator growPower()
         {
             powerUpActivated = true;
-            playerControl_script.myPower = powered;
-            Debug.Log(playerControl_script.myPower);
+            //playerControl.CurrentPower = powered;
+            Debug.Log(playerControl.CurrentPower);
             yield return new WaitForSeconds(10f);
             powerUpActivated = false;
             player_sprite.color = Color.white;
-            playerControl_script.myPower = savePreviousPower;
-            Debug.Log("Power atual: " + playerControl_script.myPower);
+            //playerControl.CurrentPower = savePreviousPower;
+            Debug.Log("Power atual: " + playerControl.CurrentPower);
             powerUpUI_script.ActiveFeedbackPowerUp(powerUpUI_script.ImageForce, powerUpActivated);
         }
     }

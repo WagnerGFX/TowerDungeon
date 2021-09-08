@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 005ecc34e15b2326da82dab181242a42, type: 3}
   m_Name: Warrior Stats
   m_EditorClassIdentifier: 
-  power: 2
-  life: 6
-  defense: 0
+  characterClass: 1
+  basePower: 0
+  baseLife: 0
+  baseDefense: 0
+  baseMoveSpeed: 0
+  baseAttackRate: 0

@@ -12,7 +12,7 @@ namespace TowerDungeon.Character
         GameStateRequestEventChannelSO gameStateChangeRequestChannel;
 
 
-        public PlayerSO playerScriptalbe;
+        public CharacterStatsSO playerBaseStats;
         public int life;
         public int numberOfHearts;
         public Image[] hearts;
@@ -26,7 +26,7 @@ namespace TowerDungeon.Character
         private void Awake()
         {
 
-            life = playerScriptalbe.life;
+            life = playerBaseStats.BaseLife;
             numberOfHearts = life;
         }
 
@@ -39,7 +39,7 @@ namespace TowerDungeon.Character
 
         void Update()
         {
-            ControlHearts();
+            //ControlHearts();
             if (invencibility)
             {
                 playerSprite.color = Color.Lerp(Color.white, new Color(255, 255, 255, 0), Mathf.PingPong(2 * Time.time, .5f));
